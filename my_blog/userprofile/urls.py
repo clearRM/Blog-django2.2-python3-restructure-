@@ -9,4 +9,5 @@ urlpatterns = [
     path('register/', views.user_register, name='register'),
     path('delete/<int:id>/', views.user_delete, name='delete'),
     #path('password-reset/', include('password_reset.urls')),
+    path('edit/<int:id>/', views.profile_edit, name='edit'),
 ]

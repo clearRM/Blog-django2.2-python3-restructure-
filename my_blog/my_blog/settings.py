@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'article',
     'userprofile',
     'password_reset',
+    'comment',
+
 ]
 
 MIDDLEWARE = [
@@ -122,7 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -152,3 +154,6 @@ EMAIL_PORT = 25
 EMAIL_USE_TLS = False
 # 默认的发件人
 DEFAULT_FROM_EMAIL = '小宁子博客网 <17740687767@163.com>'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
