@@ -5,15 +5,45 @@
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+<!--    <link rel="stylesheet"-->
+<!--      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"-->
+<!--      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"-->
+<!--      crossorigin="anonymous"-->
+<!--&gt;-->
 </head>
 <body>
 {% include 'header.html' %}
-{% block content %}{% endblock content %}
+
+
+    <!-- 新增两个 div 容器 -->
+    <div id="wrapper">
+        {% block content %}{% endblock content %}
+        <div id="push"></div>
+    </div>
+
 {% include 'footer.html' %}
+<style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        #wrapper {
+            min-height: 100%;
+            margin-bottom: -60px;
+        }
+
+        #footer,
+        #push {
+            height: 60px;
+        }
+    </style>
 <script src="{% static 'jquery/jquery-3.3.1.js' %}"></script>
 <script src="{% static 'popper/popper-1.14.4.js' %}"></script>
 <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'layer/layer.js' %}"></script>
+{% include 'back_to_top_func.html' %}
+{% block script %}{% endblock script %}
 
 </body>
 </html>

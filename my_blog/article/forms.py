@@ -5,4 +5,4 @@ class ArticlePostForm(forms.ModelForm):
     class Meta:
         # 指明数据的来源
         model = ArticlePost
-        fields = ('title','body')
+        fields = ('title','body','tags','avatar')

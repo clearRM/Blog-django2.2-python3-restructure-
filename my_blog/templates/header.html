@@ -1,3 +1,5 @@
+{% load notifications_tags %}
+{% notifications_unread as unread_count %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,12 +50,33 @@
         <!-- 如果用户已经登录，则显示用户名下拉框 -->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                 <!-- 新增代码，小红点 -->
+        {% if unread_count %}
+            <svg viewBox="0 0 8 8"
+                 width="8px"
+                 height="8px">
+                <circle cx="4"
+                        cy="4"
+                        r="4"
+                        fill="#ff6b6b"
+                        ></circle>
+            </svg>
+        {% endif %}
+
              欢迎您： {{ user.username }}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <!-- 新增代码，通知计数 -->
+        <a class="dropdown-item" href="{% url 'notice:list' %}">通知
+            {% if unread_count %}
+            <span class="badge badge-danger">{{ unread_count }}</span>
+            {% endif %}
+        </a>
+
                 <a class="dropdown-item" href='{% url "userprofile:edit" user.id %}'>个人信息</a>
-              <a class="dropdown-item" href="#" onclick="user_delete()">删除用户</a>
-              <a class="dropdown-item" href="{% url 'userprofile:logout' %}">退出登录</a>
+                 <a class="dropdown-item" href="#" onclick="user_delete()">删除用户</a>
+                <a class="dropdown-item" href="{% url 'userprofile:logout' %}">退出登录</a>
             </div>
         </li>
     <!-- 如果用户未登录，则显示 “登录” -->

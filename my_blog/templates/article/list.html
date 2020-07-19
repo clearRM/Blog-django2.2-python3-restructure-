@@ -11,12 +11,12 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{% url 'article:article_list' %}?search={{ search }}">
+                <a href="{% url 'article:article_list' %}?search={{ search }}&column={{ column }}&tag={{ tag }}">
                     最新
                 </a>
             </li>
             <li class="breadcrumb-item">
-                <a href="{% url 'article:article_list' %}?order=total_views&search={{ search }}">
+                <a href="{% url 'article:article_list' %}?order=total_views&search={{ search }}&column={{ column }}&tag={{ tag }}">
                     最热
                 </a>
             </li>
@@ -48,31 +48,110 @@
             <hr>
         {% endif %}
     {% endif %}
-    <div class="row mt-2">
-        {% for article in articles %}
-        <!-- 文章内容 -->
-        <div class="col-4 mb-4">
-        <!-- 卡片容器 -->
-            <div class="card h-100">
-                <!-- 标题 -->
-                <h4 class="card-header">{{ article.title }}</h4>
-                <!-- 摘要 -->
-                <div class="card-body">
-                    <p class="card-text">{{ article.body|slice:'100' }}...</p>
-                </div>
-                <!-- 注脚 -->
-                <div class="card-footer">
-                    <a href="{% url 'article:article_detail' article.id %}" class="btn btn-primary">阅读本文</a>
-                    <span>
-                        <small class="col align-self-end" style="color: gray;">
-                            浏览：{{article.total_views}}
 
-                        </small>
-                    </span>
-                </div>
+    <div class="row mt-2">
+<!--        v1.0 卡片容器 但由于后期增加标签 卡片容器难以满足后续需求 故改进-->
+<!--        {% for article in articles %}-->
+<!--        <div class="col-4 mb-4">-->
+<!--        &lt;!&ndash; 卡片容器 &ndash;&gt;-->
+<!--            <div class="card h-100">-->
+<!--                &lt;!&ndash; 标题 &ndash;&gt;-->
+<!--                <h4 class="card-header">{{ article.title }}</h4>-->
+<!--                &lt;!&ndash; 摘要 &ndash;&gt;-->
+<!--                <div class="card-body">-->
+<!--                    <p class="card-text">{{ article.body|slice:'100' }}...</p>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; 注脚 &ndash;&gt;-->
+<!--                <div class="card-footer">-->
+<!--                    <a href="{% url 'article:article_detail' article.id %}" class="btn btn-primary">阅读本文</a>-->
+<!--                    <span>-->
+<!--                        <small class="col align-self-end" style="color: gray;">-->
+<!--                            浏览：{{article.total_views}}-->
+
+<!--                        </small>-->
+<!--                    </span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        {% endfor %}-->
+ {% for article in articles %}
+        <!-- 标题图 -->
+        {% if article.avatar %}
+            <div class="col-3">
+                <img src="{{ article.avatar.url }}"
+                     alt="avatar"
+                     style="max-width:100%; border-radius: 20px"
+                >
             </div>
+        {% endif %}
+
+        <!-- 文章内容 -->
+        <div class="col">
+            <!-- 栏目 -->
+            {% if article.column %}
+                <a  role="button"
+                        href="{% url 'article:article_list' %}?column={{ article.column.id }}"
+                    class="btn btn-sm mb-2
+                        {% if article.column.title == 'python' %}
+                            btn-success
+                        {% elif article.column.title == 'java' %a}
+                            btn-danger
+                        {% elif article.column.title == 'c' %}
+                            btn-warning
+                        {% endif %}a
+                    "
+                >
+                    {{ article.column }}
+                </a>
+            {% endif %}
+
+            <!-- 标签 -->
+<span>
+    {% for tag in article.tags.all %}
+        <a href="{% url 'article:article_list' %}?tag={{ tag }}"
+           class="badge badge-secondary"
+        >
+            {{ tag }}
+        </a>
+    {% endfor %}
+</span>
+
+            <!-- 标题 -->
+            <h4>
+                <b>
+                    <a href="{% url 'article:article_detail' article.id %}"
+                       style="color: black;"
+                    >
+                        {{ article.title }}
+                    </a>
+                </b>
+            </h4>
+            <!-- 摘要 -->
+            <div>
+                <p style="color: gray;">
+                    {{ article.body|slice:'100' }}...
+                </p>
+            </div>
+            <!-- 注脚 -->
+            <p>
+                    <!-- 附加信息 -->
+                    <span>
+                        <i class="fas fa-eye" style="color: lightskyblue;"></i>
+                        {{ article.total_views }}&nbsp;&nbsp;&nbsp;
+                    </span>
+                    <span>
+                        <i class="fas fa-comments" style="color: yellowgreen;"></i>
+                        {{ article.comments.count }}&nbsp;&nbsp;&nbsp;
+                    </span>
+                    <span>
+        <i class="fas fa-clock" style="color: pink;"></i>
+        {{ article.created|date:'Y-m-d' }}
+    </span>
+                </p>
+            <hr>
         </div>
-        {% endfor %}
+        <hr style="width: 100%;"/>
+    {% endfor %}
 
     </div>
 
@@ -93,12 +172,12 @@
 <!--                <a href="?page=1" class="btn btn-success">-->
 <!--                    &laquo; 1-->
 <!--                </a>-->
-            <a href="?page=1&order={{ order }}&search={{ search }}" class="btn btn-success">&laquo; 1</a>
+            <a href="?page=1&order={{ order }}&search={{ search }}&column={{ column }}&tag={{ tag }}" class="btn btn-success">&laquo; 1</a>
                 <span>...</span>
 <!--                <a href="?page={{ articles.previous_page_number }}"-->
 <!--                   class="btn btn-secondary"-->
 <!--                >-->
-            <a href="?page={{ articles.previous_page_number }}&order={{ order }}&search={{ search }}"
+            <a href="?page={{ articles.previous_page_number }}&order={{ order }}&search={{ search }}&column={{ column }}&tag={{ tag }}"
    class="btn btn-secondary">
                     {{ articles.previous_page_number }}
                 </a>
@@ -114,7 +193,7 @@
 <!--                <a href="?page={{ articles.next_page_number }}"-->
 <!--                   class="btn btn-secondary"-->
 <!--                >-->
-            <a href="?page={{ articles.next_page_number }}&order={{ order }}&search={{ search }}"
+            <a href="?page={{ articles.next_page_number }}&order={{ order }}&search={{ search }}&column={{ column }}&tag={{ tag }}"
    class="btn btn-secondary">
                     {{ articles.next_page_number }}
                 </a>
@@ -122,7 +201,7 @@
 <!--                <a href="?page={{ articles.paginator.num_pages }}"-->
 <!--                   class="btn btn-success"-->
 <!--                >-->
-            <a href="?page={{ articles.paginator.num_pages }}&order={{ order }}&search={{ search }}"
+            <a href="?page={{ articles.paginator.num_pages }}&order={{ order }}&search={{ search }}&column={{ column }}&tag={{ tag }}"
    class="btn btn-success">{{ articles.paginator.num_pages }} &raquo;</a>
             {% endif %}
         </span>

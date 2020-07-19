@@ -1,0 +1,157 @@
+Watching for file changes with StatReloader
+Waiting for apps ready_event.
+Apps ready_event triggered. Sending autoreload_started signal.
+Watching dir C:\Users\xiaoningzi0527\PycharmProjects\blog_master\my_blog\locale with glob **/*.mo.
+Watching dir C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\contrib\admin\locale with glob **/*.mo.
+Watching dir C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\contrib\auth\locale with glob **/*.mo.
+Watching dir C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\contrib\contenttypes\locale with glob **/*.mo.
+Watching dir C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\contrib\sessions\locale with glob **/*.mo.
+Watching dir C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\contrib\messages\locale with glob **/*.mo.
+Watching dir C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\contrib\staticfiles\locale with glob **/*.mo.
+Watching dir C:\Users\xiaoningzi0527\PycharmProjects\blog_master\my_blog\article\locale with glob **/*.mo.
+Watching dir C:\Users\xiaoningzi0527\PycharmProjects\blog_master\my_blog\userprofile\locale with glob **/*.mo.
+Watching dir C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\password_reset\locale with glob **/*.mo.
+Watching dir C:\Users\xiaoningzi0527\PycharmProjects\blog_master\my_blog\comment\locale with glob **/*.mo.
+Watching dir C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\taggit\locale with glob **/*.mo.
+Watching dir C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\ckeditor\locale with glob **/*.mo.
+Watching dir C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\mptt\locale with glob **/*.mo.
+Watching dir C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\notifications\locale with glob **/*.mo.
+Watching dir C:\Users\xiaoningzi0527\PycharmProjects\blog_master\my_blog\notice\locale with glob **/*.mo.
+(0.000) SELECT @@SQL_AUTO_IS_NULL; args=None
+(0.000) SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED; args=None
+(0.002) SHOW FULL TABLES; args=None
+(0.000) SELECT `django_migrations`.`app`, `django_migrations`.`name` FROM `django_migrations`; args=()
+(0.001) SELECT @@SQL_AUTO_IS_NULL; args=None
+(0.000) SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED; args=None
+(0.001) SELECT `article_articlepost`.`id`, `article_articlepost`.`author_id`, `article_articlepost`.`title`, `article_articlepost`.`body`, `article_articlepost`.`created`, `article_articlepost`.`updated`, `article_articlepost`.`total_views`, `article_articlepost`.`avatar`, `article_articlepost`.`column_id` FROM `article_articlepost` WHERE `article_articlepost`.`id` = 9999; args=(9999,)
+(0.001) SELECT `article_articlepost`.`id`, `article_articlepost`.`author_id`, `article_articlepost`.`title`, `article_articlepost`.`body`, `article_articlepost`.`created`, `article_articlepost`.`updated`, `article_articlepost`.`total_views`, `article_articlepost`.`avatar`, `article_articlepost`.`column_id` FROM `article_articlepost` ORDER BY `article_articlepost`.`created` DESC  LIMIT 21; args=()
+(0.001) SELECT `django_session`.`session_key`, `django_session`.`session_data`, `django_session`.`expire_date` FROM `django_session` WHERE (`django_session`.`expire_date` > '2020-07-19 10:57:24.333244' AND `django_session`.`session_key` = 'q8kovs1qh10do8zzherbd19y19lmr3xp'); args=('2020-07-19 10:57:24.333244', 'q8kovs1qh10do8zzherbd19y19lmr3xp')
+(0.001) SELECT `auth_user`.`id`, `auth_user`.`password`, `auth_user`.`last_login`, `auth_user`.`is_superuser`, `auth_user`.`username`, `auth_user`.`first_name`, `auth_user`.`last_name`, `auth_user`.`email`, `auth_user`.`is_staff`, `auth_user`.`is_active`, `auth_user`.`date_joined` FROM `auth_user` WHERE `auth_user`.`id` = 6; args=(6,)
+Internal Server Error: /article/article-detail/9999/
+Traceback (most recent call last):
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\my_blog\article\views.py", line 66, in article_detail
+    article = ArticlePost.objects.get(id=id)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\db\models\query.py", line 408, in get
+    self.model._meta.object_name
+article.models.ArticlePost.DoesNotExist: ArticlePost matching query does not exist.
+"GET /article/article-detail/9999/ HTTP/1.1" 500 79181
+(0.001) SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED; args=None
+(0.001) SELECT `article_articlepost`.`id`, `article_articlepost`.`author_id`, `article_articlepost`.`title`, `article_articlepost`.`body`, `article_articlepost`.`created`, `article_articlepost`.`updated`, `article_articlepost`.`total_views`, `article_articlepost`.`avatar`, `article_articlepost`.`column_id` FROM `article_articlepost` WHERE `article_articlepost`.`id` = 9999; args=(9999,)
+(0.001) SELECT `article_articlepost`.`id`, `article_articlepost`.`author_id`, `article_articlepost`.`title`, `article_articlepost`.`body`, `article_articlepost`.`created`, `article_articlepost`.`updated`, `article_articlepost`.`total_views`, `article_articlepost`.`avatar`, `article_articlepost`.`column_id` FROM `article_articlepost` ORDER BY `article_articlepost`.`created` DESC  LIMIT 21; args=()
+(0.001) SELECT `django_session`.`session_key`, `django_session`.`session_data`, `django_session`.`expire_date` FROM `django_session` WHERE (`django_session`.`expire_date` > '2020-07-19 10:57:40.451119' AND `django_session`.`session_key` = 'q8kovs1qh10do8zzherbd19y19lmr3xp'); args=('2020-07-19 10:57:40.451119', 'q8kovs1qh10do8zzherbd19y19lmr3xp')
+(0.000) SELECT `auth_user`.`id`, `auth_user`.`password`, `auth_user`.`last_login`, `auth_user`.`is_superuser`, `auth_user`.`username`, `auth_user`.`first_name`, `auth_user`.`last_name`, `auth_user`.`email`, `auth_user`.`is_staff`, `auth_user`.`is_active`, `auth_user`.`date_joined` FROM `auth_user` WHERE `auth_user`.`id` = 6; args=(6,)
+Internal Server Error: /article/article-detail/9999/
+Traceback (most recent call last):
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\my_blog\article\views.py", line 66, in article_detail
+    article = ArticlePost.objects.get(id=id)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\db\models\query.py", line 408, in get
+    self.model._meta.object_name
+article.models.ArticlePost.DoesNotExist: ArticlePost matching query does not exist.
+"GET /article/article-detail/9999/ HTTP/1.1" 500 79181
+File C:\Users\xiaoningzi0527\PycharmProjects\blog_master\my_blog\my_blog\settings.py. is_changed: False, is_new: True
+File C:\Users\xiaoningzi0527\PycharmProjects\blog_master\my_blog\my_blog\settings.py previous mtime: None, current mtime: 1595156295.7171752
+C:\Users\xiaoningzi0527\PycharmProjects\blog_master\my_blog\my_blog\settings.py notified as changed. Signal results: [(<function translation_file_changed at 0x000002430ABE6288>, None)].
+C:\Users\xiaoningzi0527\PycharmProjects\blog_master\my_blog\my_blog\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /article/article-detail/9999/
+Traceback (most recent call last):
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\my_blog\article\views.py", line 66, in article_detail
+    article = ArticlePost.objects.get(id=id)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\db\models\query.py", line 408, in get
+    self.model._meta.object_name
+article.models.ArticlePost.DoesNotExist: ArticlePost matching query does not exist.
+"GET /article/article-detail/9999/ HTTP/1.1" 500 79191
+C:\Users\xiaoningzi0527\PycharmProjects\blog_master\my_blog\my_blog\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /
+"GET / HTTP/1.1" 404 2718
+"GET /article/article-list/ HTTP/1.1" 200 16594
+Internal Server Error: /article/article-detail/9999/
+Traceback (most recent call last):
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\my_blog\article\views.py", line 66, in article_detail
+    article = ArticlePost.objects.get(id=id)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\db\models\query.py", line 408, in get
+    self.model._meta.object_name
+article.models.ArticlePost.DoesNotExist: ArticlePost matching query does not exist.
+"GET /article/article-detail/9999/ HTTP/1.1" 500 79190
+Internal Server Error: /article/article-detail/9999/
+Traceback (most recent call last):
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\my_blog\article\views.py", line 66, in article_detail
+    def article_detail(request,id):
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\db\models\query.py", line 408, in get
+    self.model._meta.object_name
+article.models.ArticlePost.DoesNotExist: ArticlePost matching query does not exist.
+"GET /article/article-detail/9999/ HTTP/1.1" 500 79216
+Internal Server Error: /article/article-detail/9999/
+Traceback (most recent call last):
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\my_blog\article\views.py", line 66, in article_detail
+    def article_detail(request,id):
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\db\models\query.py", line 408, in get
+    self.model._meta.object_name
+article.models.ArticlePost.DoesNotExist: ArticlePost matching query does not exist.
+"GET /article/article-detail/9999/ HTTP/1.1" 500 79351
+Internal Server Error: /article/article-detail/1/
+Traceback (most recent call last):
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\my_blog\article\views.py", line 66, in article_detail
+    def article_detail(request,id):
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\xiaoningzi0527\PycharmProjects\blog_master\venv\lib\site-packages\django\db\models\query.py", line 408, in get
+    self.model._meta.object_name
+article.models.ArticlePost.DoesNotExist: ArticlePost matching query does not exist.
+"GET /article/article-detail/1/ HTTP/1.1" 500 79290
+"GET /article/article-detail/4/ HTTP/1.1" 200 12303
